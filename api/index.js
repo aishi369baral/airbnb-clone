@@ -17,20 +17,21 @@ require('dotenv').config();
 const app = express();
 
 const bcryptSalt = bcrypt.genSaltSync(10);
-const jwtSecret = 'fasefraw4r5r3wq45wdfgw34twdfg';
-const bucket = 'dawid-booking-app';
+const jwtSecret = process.env.JWT_SECRET;
+const bucket = process.env.S3_BUCKET;
+
 
 app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(__dirname+'/uploads'));
 app.use(cors({
   credentials: true,
-  origin: 'http://127.0.0.1:5173',
+  origin: process.env.FRONTEND_URL,
 }));
 
 async function uploadToS3(path, originalFilename, mimetype) {
   const client = new S3Client({
-    region: 'us-east-1',
+    region: process.env.S3_REGION,
     credentials: {
       accessKeyId: process.env.S3_ACCESS_KEY,
       secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
