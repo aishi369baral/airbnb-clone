@@ -2,3 +2,7 @@
 api/node_modules
 api/.env
 api/uploads/*
+# Ignore Terraform state and provider binaries
+.terraform/
+.terraform.lock.hcl
+
