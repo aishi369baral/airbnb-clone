@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  namespace: airbnb-clone
+  labels:
+    app: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      name: backend
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: aishi698/airbnb-backend-beta:v1.1
+          ports:
+            - containerPort: 4000
+          env:
+            - name: MONGO_URL
+              value: "mongodb://mongo-service/airbnb-clone"
+            - name: S3_BUCKET
+              value: "my-airbnb-clone-bucket"
+            - name: S3_REGION
+              value: "us-east-1"
+
+          envFrom:
+            - secretRef:
+                name: aws-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+ namespace: airbnb-clone
+spec:
+  type: NodePort
+  selector:
+    app: backend
+  ports:
+    - port: 4000
+      targetPort: 4000
+      protocol: TCP
+      nodePort: 31100
+                            
+          
