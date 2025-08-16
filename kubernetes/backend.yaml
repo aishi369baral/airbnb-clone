@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: aishi698/airbnb-backend-beta:v10
+          image: aishi698/airbnb-backend-beta:v11
           ports:
             - containerPort: 4000
           env:
