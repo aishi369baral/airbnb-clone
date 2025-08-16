@@ -6,6 +6,7 @@ export default function RegisterPage() {
   const [name,setName] = useState('');
   const [email,setEmail] = useState('');
   const [password,setPassword] = useState('');
+  const API_BASE = import.meta.env.VITE_API_PATH;
   async function registerUser(ev) {
     ev.preventDefault();
     try {
