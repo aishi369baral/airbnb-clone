@@ -9,15 +9,16 @@ export default function RegisterPage() {
   async function registerUser(ev) {
     ev.preventDefault();
     try {
-      await axios.post('/register', {
-        name,
-        email,
-        password,
-      });
-      alert('Registration successful. Now you can log in');
-    } catch (e) {
-      alert('Registration failed. Please try again later');
-    }
+    await axios.post(`${API_BASE}/api/users/register`, { // include full backend path
+      name,
+      email,
+      password,
+    });
+    alert('Registration successful. Now you can log in');
+  } catch (e) {
+    console.error('Registration error:', e);
+    alert('Registration failed. Please try again later');
+  }
   }
   return (
     <div className="mt-4 grow flex items-center justify-around">
