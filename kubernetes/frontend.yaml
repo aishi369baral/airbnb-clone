@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: aishi698/airbnb-frontend-beta:v11
+          image: aishi698/airbnb-frontend-beta:v12
           ports:
             - containerPort: 5173
 ---
