@@ -10,7 +10,7 @@ export default function RegisterPage() {
   async function registerUser(ev) {
     ev.preventDefault();
     try {
-    await axios.post(`${API_BASE}/api/users/register`, { // include full backend path
+    await axios.post(`http://44.202.218.22:31100/api/users/register`, { // include full backend path
       name,
       email,
       password,
