@@ -22,6 +22,7 @@ WORKDIR /app
 # Copy built files from builder stage
 COPY --from=backend-builder /app .
 
+COPY .env.docker .env
 # Expose app port
 EXPOSE 4000
 
