@@ -31,7 +31,9 @@ spec:
 
           envFrom:
             - secretRef:
-                name: aws-secret
+                name: aws-secret     # contains s3_SECRET
+            - secretRef:
+                name: jwt-secret     # contains JWT_SECRET
 ---
 apiVersion: v1
 kind: Service
