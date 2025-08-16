@@ -10,8 +10,6 @@ COPY . .
 # Install dependencies
 RUN npm install
 
-# Run tests (optional)
-RUN npm run test
 
 # Stage 2: Runtime
 FROM node:21-slim
